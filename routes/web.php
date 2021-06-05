@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StaticPagesController;
+use App\Http\Controllers\UsersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,5 +16,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    //return view('welcome');
+    return view('static_pages/home');
 });
+
+Route::get('static_pages/home', [StaticPagesController::class,'home'])->name('home');
+Route::get('/help', [StaticPagesController::class,'help'])->name('help');
+Route::get('/about', [StaticPagesController::class,'about'])->name('about');
+
+Route::get('signup', [UsersController::class,'create'])->name('signup');
