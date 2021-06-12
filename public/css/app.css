@@ -10047,8 +10047,11 @@ section.user_info h1 {
   margin-top: 15px;
 }
 
-.gravatar {
-  float: left;
-  max-width: 50px;
-  border-radius: 50%;
+.gravatar_edit {
+  margin: 15px auto;
+  text-align: center;
+}
+.gravatar_edit .gravatar {
+  float: none;
+  max-width: 100px;
 }
