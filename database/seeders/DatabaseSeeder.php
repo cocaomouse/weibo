@@ -16,7 +16,10 @@ class DatabaseSeeder extends Seeder
     {
         // \App\Models\User::factory(10)->create();
         Model::unguard();
+
         $this->call(UserTableSeeder::class);
+        $this->call(StatusesTableSeeder::class);
+
         Model::reguard();
     }
 }
