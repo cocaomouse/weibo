@@ -6,6 +6,7 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\SessionsController;
 use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\StatusesController;
+use App\Http\Controllers\FollowersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +31,9 @@ Route::get('/about', [StaticPagesController::class,'about'])->name('about');
 Route::get('signup', [UsersController::class,'create'])->name('signup');
 Route::resource('users', 'App\Http\Controllers\UsersController');
 
+Route::get('/users/{user}/followings',[UsersController::class,'followings'])->name('users.followings');
+Route::get('users/{user}/followers',[UsersController::class,'followers'])->name('users.followers');
+
 Route::get('login', [SessionsController::class,'create'])->name('login');
 Route::post('login', [SessionsController::class,'store'])->name('login');
 Route::delete('logout', [SessionsController::class,'destroy'])->name('logout');
@@ -42,3 +46,6 @@ Route::get('password/reset/{token}',  [PasswordController::class,'showResetForm'
 Route::post('password/reset',  [PasswordController::class,'reset'])->name('password.update');
 
 Route::resource('statuses','App\Http\Controllers\StatusesController',['only' => ['store','destroy']]);
+
+Route::post('/users/followers/{user}',[FollowersController::class,'store'])->name('followers.store');
+Route::delete('/users/followers/{user}',[FollowersController::class,'destroy'])->name('followers.destroy');
